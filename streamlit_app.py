@@ -46,10 +46,12 @@ if user_input:
                 if response.get('error'):
                     st.write(response['error'])
                 else:
-                    responses.append((response['answer'], response['score']))
-                    if response['score'] > max_score:
-                        max_score = response['score']
-                        max_answer = response['answer']
+                    answer = response.get('answer')
+                    score = response.get('score')
+                    responses.append((answer, score))
+                    if score > max_score:
+                        max_score = score
+                        max_answer = answer
 
     if max_score >= min_score:
         output = max_answer
